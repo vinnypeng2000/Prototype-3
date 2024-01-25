@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 721165554}
     - target: {fileID: 3878321745695307708, guid: 28f113bc1593119448bfebc93373c1ad, type: 3}
       propertyPath: speed
-      value: 0.2
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3878321745695307708, guid: 28f113bc1593119448bfebc93373c1ad, type: 3}
       propertyPath: dashCD

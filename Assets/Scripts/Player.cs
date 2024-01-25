@@ -29,23 +29,8 @@ public class Player : MonoBehaviour
         // isMoving = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        iFrameCounter += Time.deltaTime;
-
-        if (health <= 0)
-        {
-            gm.Die();
-        }
-
-        // Vector3 forward = cam.transform.forward;
-        // Vector3 right = cam.transform.right;
-        // forward.y = 0;
-        // forward = forward.normalized;
-        // right.y = 0;
-        // right = right.normalized;
-
         // Getting camera-normalized directional vectors
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -58,7 +43,7 @@ public class Player : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput);
 
-        rb.AddForce(movement * speed, ForceMode.Impulse);
+        rb.AddForce(movement * speed, ForceMode.Force);
 
         if (movement != Vector3.zero)
         {
@@ -69,12 +54,12 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 animator.SetBool("isRunning", true);
-                speed = 0.25f;
+                // speed = 0.5f;
             }
             else
             {
                 animator.SetBool("isRunning", false);
-                speed = 0.2f;
+                // speed = 10f;
             }
             if (horizontalInput > 0)
             {
@@ -94,6 +79,26 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isMoving", false);
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        iFrameCounter += Time.deltaTime;
+
+        if (health <= 0)
+        {
+            gm.Die();
+        }
+
+        // Vector3 forward = cam.transform.forward;
+        // Vector3 right = cam.transform.right;
+        // forward.y = 0;
+        // forward = forward.normalized;
+        // right.y = 0;
+        // right = right.normalized;
+
+        
     }
 
     // IEnumerator Fast()
